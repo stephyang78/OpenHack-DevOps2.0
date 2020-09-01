@@ -19,7 +19,12 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      
+    - name: Build with web project
+      run: dotnet build apis/poi/web/poi.csproj --configuration Release
+    
+    - name: Build the unit test project
+      run: dotnet build apis/poi/tests/UnitTests/UnitTests.csproj --configuration Release
+    
+    - name: Run the unit test
+      run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --configuration Release
