@@ -16,11 +16,9 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: 2.1
     - name: Install dependencies
       run: dotnet restore apis/poi/web/poi.csproj
-    - name: Install dependencies
-      run: dotnet restore apis/poi/tests/UnitTests/UnitTests.csproj
       
     - name: Build with web project
       run: dotnet build apis/poi/web/poi.csproj --configuration Release
