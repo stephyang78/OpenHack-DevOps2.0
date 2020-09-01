@@ -4,14 +4,14 @@ on:
   push:
     branches: [ master ]
     paths:
-    - apis/poi/*
-    - apis/poi/tests/*
+    - apis/poi/**
+    - apis/poi/tests/**
     - .github/workflows/poi.yml
   pull_request:
     branches: [ master ]
     paths:
-    - apis/poi/*
-    - apis/poi/tests/*
+    - apis/poi/**
+    - apis/poi/tests/**
     - .github/workflows/poi.yml
 
 jobs:
