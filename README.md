@@ -27,7 +27,7 @@ It is useful but not required to have a basic knowledge of the following topics:
 
 * Kubernetes
 * Azure DevOps (formally VSTS) or Jenkins
-* GitHub
+* GitHub 2.0
 
 ## Resources
 
