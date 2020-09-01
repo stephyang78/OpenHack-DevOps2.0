@@ -37,5 +37,12 @@ jobs:
     - name: Run the unit test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --configuration Release
     - if: ${{ failure() }} 
-      name: Create GitHub Issue
-      run: 'echo need a GH issue'
+      name: Git Creation Demo
+      uses: bryannice/gitactions-git-issue-creation@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_COMMIT_SHA: ${{ github.sha }}
+        GITHUB_REPO_OWNER: 'bryan-nice'
+        GITHUB_REPO_NAME: 'github-issue-creation'
+        GITHUB_ISSUE_TITLE: 'Demo''ing Git Issue Creation'
+        GITHUB_ISSUE_BODY: 'Demo''ing Git Issue Creation'
