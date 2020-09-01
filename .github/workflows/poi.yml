@@ -36,3 +36,6 @@ jobs:
     
     - name: Run the unit test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --configuration Release
+    - if: ${{ failure() }} 
+      name: Create GitHub Issue
+      run: 'echo need a GH issue'
