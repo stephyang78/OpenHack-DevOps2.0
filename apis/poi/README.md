@@ -11,7 +11,7 @@
 
 ### Running the Integration Test
 
-## References 3.0 (making sure pull request works!)
+## References 3.0 (making sure pull request works - again)
 
 * [Web API](https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-vsc?view=aspnetcore-2.1)
 * [Unit Testing](https://docs.microsoft.com/en-us/dotnet/core/testing/unit-testing-with-dotnet-test?view=aspnetcore-2.1)
