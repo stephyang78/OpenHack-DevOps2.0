@@ -78,3 +78,7 @@ jobs:
             title: "${{ env.build_name }} Workflow ${{ github.run_number }} Failed! ",
             body: body
           });
+    - uses: azure/webapps-container-deploy@v1
+      with:
+        app-name: 'openhackr6a3ic71poi'
+        images: '$registry/$repository:${{github.run_number}}'
