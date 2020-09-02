@@ -18,7 +18,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    continue-on-error: true
+    
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -36,6 +37,7 @@ jobs:
     
     - name: Run the unit test
       run: dotnet test apis/poi/tests/UnitTests/UnitTests.csproj --configuration Release
+      
     - if: ${{ failure() }} 
       name: Git Creation Demo
       uses: bryannice/gitactions-git-issue-creation@master
