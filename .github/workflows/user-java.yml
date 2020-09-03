@@ -7,6 +7,9 @@ env:
   docker_path: apis/user-java
   build_name: USER-JAVA
   webapp_name: openhackr6a3ic71userjava
+  staging_url: https://openhackr6a3ic71userjava-staging.azurewebsites.net
+  prod_url: https://openhackr6a3ic71userjava.azurewebsites.net
+  resource_group: openhackr6a3ic71rg
 
 on:
   push:

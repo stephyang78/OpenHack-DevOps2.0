@@ -7,6 +7,9 @@ env:
   docker_path: apis/trips
   build_name: TRIPS
   webapp_name: openhackr6a3ic71trips
+  staging_url: https://openhackr6a3ic71trips-staging.azurewebsites.net
+  prod_url: https://openhackr6a3ic71trips.azurewebsites.net
+  resource_group: openhackr6a3ic71rg
 
 on:
   push:

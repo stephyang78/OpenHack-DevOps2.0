@@ -6,6 +6,9 @@ env:
   docker_path: apis/userprofile
   build_name: UserProfile
   webapp_name: openhackr6a3ic71userprofile
+  staging_url: https://openhackr6a3ic71userprofile-staging.azurewebsites.net
+  prod_url: https://openhackr6a3ic71userprofile.azurewebsites.net
+  resource_group: openhackr6a3ic71rg
 
 on:
   push:
