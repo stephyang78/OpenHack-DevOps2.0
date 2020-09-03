@@ -83,4 +83,4 @@ jobs:
       with:
         app-name: openhackr6a3ic71poi
         publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
-        images: $registry/$repository:${{github.run_number}}  
+        images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-poi:${{github.run_number}}  
