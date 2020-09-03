@@ -6,6 +6,7 @@ env:
   repository: devopsoh/api-user-java
   docker_path: apis/user-java
   build_name: USER-JAVA
+  webapp_name: openhackr6a3ic71userjava
 
 on:
   push:
@@ -87,5 +88,6 @@ jobs:
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: openhackr6a3ic71userjava
-        images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-user-java:${{github.run_number}}
+        app-name: ${{ env.webapp_name }}
+        slot-name: staging
+        images: ${{ env.registry }}/${{ env.repository }}:${{github.run_number}}

@@ -6,6 +6,7 @@ env:
   repository: devopsoh/api-trips
   docker_path: apis/trips
   build_name: TRIPS
+  webapp_name: openhackr6a3ic71trips
 
 on:
   push:
@@ -90,5 +91,6 @@ jobs:
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: openhackr6a3ic71trips
-        images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-trips:${{github.run_number}}  
+        app-name: ${{ env.webapp_name }}
+        slot-name: staging
+        images: ${{ env.registry }}/${{ env.repository }}:${{github.run_number}}

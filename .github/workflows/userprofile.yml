@@ -5,6 +5,7 @@ env:
   repository: devopsoh/api-userprofile
   docker_path: apis/userprofile
   build_name: UserProfile
+  webapp_name: openhackr6a3ic71userprofile
 
 on:
   push:
@@ -86,5 +87,6 @@ jobs:
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: openhackr6a3ic71userprofile
-        images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-userprofile:${{github.run_number}}
+        app-name: ${{ env.webapp_name }}
+        slot-name: staging
+        images: ${{ env.registry }}/${{ env.repository }}:${{github.run_number}}

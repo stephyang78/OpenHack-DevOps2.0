@@ -6,6 +6,7 @@ env:
   repository: devopsoh/api-poi
   docker_path: apis/poi/web
   build_name: POI
+  webapp_name: openhackr6a3ic71poi
 
 on:
   push:
@@ -87,5 +88,6 @@ jobs:
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: openhackr6a3ic71poi
-        images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-poi:${{github.run_number}}  
+        app-name: ${{ env.webapp_name }}
+        slot-name: staging
+        images: ${{ env.registry }}/${{ env.repository }}:${{github.run_number}}
