@@ -78,9 +78,14 @@ jobs:
             title: "${{ env.build_name }} Workflow ${{ github.run_number }} Failed! ",
             body: body
           });
+          
+    - name: Login via Az module
+      uses: azure/login@v1.1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+
     - name: 'Deploy to Azure Web App for Container'
       uses: azure/webapps-deploy@v2
       with:
         app-name: openhackr6a3ic71poi
-        publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
         images: openhackr6a3ic71acr.azurecr.io/devopsoh/api-poi:${{github.run_number}}  
