@@ -112,7 +112,7 @@ jobs:
             title: "${{ env.build_name }} Workflow ${{ github.run_number }} Failed! ",
             body: body
           });
-  validate_staging:
+  validate_staging_and_swap_prod:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     needs: deploy_staging
@@ -139,5 +139,32 @@ jobs:
         else {
         Write-Error "POI API is not healthy"
         }
-
+  validate_prod:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    needs: validate_staging_and_swap_prod
+    steps:
+    - name: curl
+      id: poi-health-check
+      uses: satak/webrequest-action@master
+      with:
+        url: ${{ env.prod_url }}/api/healthcheck/poi
+        method: GET
+    - name: Login via Az module
+      uses: azure/login@v1.1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+    - name: Check Output Swap Slots
+      shell: pwsh
+      run: |
+        $output = '${{ steps.poi-health-check.outputs.output }}' | ConvertFrom-Json
+        Write-Host " Status code is $($output.statusCode) "
+        if($($output.statusCode) -eq 200) {
+        Write-host "Healthy"
+        
+        }
+        else {
+        Write-Error "POI API is not healthy - reverting to previous version"
+        az webapp deployment slot swap --name ${{ env.webapp_name }} --resource-group ${{ env.resource_group }} --slot production --target-slot staging
+        }
   
