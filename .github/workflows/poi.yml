@@ -82,5 +82,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: openhackr6a3ic71poi
-        slot-name: 'staging'
+        publish-profile: ${{ secrets.AZUREWEBAPPPUBLISHPROFILE }}
         images: $registry/$repository:${{github.run_number}}  
