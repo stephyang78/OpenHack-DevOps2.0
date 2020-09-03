@@ -165,6 +165,6 @@ jobs:
         }
         else {
         Write-Error "POI API is not healthy - reverting to previous version"
-        az webapp deployment slot swap --name ${{ env.webapp_name }} --resource-group ${{ env.resource_group }} --slot production --target-slot staging
+        az webapp deployment slot swap --name ${{ env.webapp_name }} --resource-group ${{ env.resource_group }} --slot staging --target-slot production
         }
   
