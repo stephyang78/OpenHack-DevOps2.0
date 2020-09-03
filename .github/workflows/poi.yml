@@ -1,5 +1,5 @@
 name: POI CICD
-
+# Comment
 env:
   poi_path: apis/poi/**
   registry: openhackr6a3ic71acr.azurecr.io
